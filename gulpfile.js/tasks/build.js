@@ -9,13 +9,14 @@ gulp.task('build', function(cb) {
       'bower'
     ],
     [
-      'images',
-      'scripts-standalone'
+      'images'
     ],
     [
       'styles',
-      'scripts',
       'templates'
+    ],
+    [
+      'inlinecss'
     ],
     cb
   );

@@ -1,10 +1,10 @@
 {
-  "name": "email genrator",
+  "name": "email_theme_generator",
   "version": "0.1.0",
   "description": "A static e-mail generator",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aderaaij/totallystatical"
+    "url": "https://github.com/aderaaij/email_theme_generator"
   },
   "keywords": [
     "gulp",
@@ -15,9 +15,9 @@
   "author": "Arden de Raaij <mail@arden.nl>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aderaaij/totallystatical/issues"
+    "url": "https://github.com/aderaaij/email_theme_generator/issues"
   },
-  "homepage": "https://github.com/aderaaij/totallystatical",
+  "homepage": "https://github.com/aderaaij/email_theme_generator",
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-load-plugins": "^0.10.0",
@@ -48,6 +48,7 @@
     "express": "^4.13.1",
     "morgan": "^1.6.1",
     "open": "0.0.5",
-    "compression": "^1.5.1"
+    "compression": "^1.5.1",
+    "gulp-inline-css": "^2.0.0"
   }
 }

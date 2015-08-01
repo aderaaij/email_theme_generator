@@ -1,0 +1,23 @@
+.mailHeader {
+
+  & {
+    width: 100%;
+    background-color: #ececec;
+  }
+
+  &__imageWrap {
+    width: 50px;
+    height: 50px;
+    background-color: #ec008c;
+  }
+
+  &__logo {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__title {
+    margin-left: 20px;
+  }
+}

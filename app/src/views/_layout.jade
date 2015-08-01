@@ -1,12 +1,76 @@
-doctype html
-html(lang="en")
-	block vars
-	head
-		block title
-			title #{pageTitle} - My Static Site
-		link(rel='stylesheet', href='assets/css/screen.min.css')
-	body(class='#{bodyClass}')
+link(rel='stylesheet', href='assets/css/screen.min.css')
 
-		table#bodyTable
+table.body
+	tr
+		td.center(align='center', valign='top')
+			center
+				table.row.header
+					tr
+						td.center(align='center')
+							center
+								table.container
+									tr
+										td.wrapper.last
+											table.twelve.columns
+												tr
+													td.six.sub-columns
+														.logoWrap
+															img(src="{{ 'logo.png' | asset_url }}")
+													td.six.sub-columns.last(style='text-align:right; vertical-align:middle;')
+														span.template-label Your CFYE order
+													td.expander
+				table.container
+					tr
+						td
+							block content
 
-		block content
+							table.row.footer
+								tr
+									td.wrapper
+										table.six.columns
+											tr
+												td.left-text-pad
+													h5 Connect With Us:
+													table.tiny-button.facebook
+														tr
+															td
+																a(href='https://facebook.com/crackforyoureyes', target="_blank") Facebook
+													br
+													table.tiny-button.twitter
+														tr
+															td
+																a(href='https://facebook.com/cfye_crew', target="_blank") Twitter
+													br
+													table.tiny-button.instagram
+														tr
+															td
+																a(href='https://instagram.com/crackforyoureyes') Instagram
+												td.expander
+									td.wrapper.last
+										table.six.columns
+											tr
+												td.last.right-text-pad
+													h5 Contact Info:
+													p Website:&nbsp;
+														a(href='http://shop.cfye.com') shop.cfye.com
+													p
+														| E-mail:&nbsp;
+														a(href='mailto:shop@cfye.com') shop@cfye.com
+													p
+														| Magazine:&nbsp;
+														a(href='http://cfye.com') cfye.com
+												td.expander
+							table.row
+								tr
+									td.wrapper.last
+										table.twelve.columns
+											tr
+												td(align='center')
+													center
+														p(style='text-align:center;')
+															a(href='#') Terms
+															| &nbsp;|&nbsp;
+															a(href='#') Privacy
+															| &nbsp;|&nbsp;
+															a(href='#') Return policy
+												td.expander

@@ -1,0 +1,104 @@
+extends ./views/_layout.jade
+
+block content
+	table.mailHeader.bodyTable
+		tr
+			td
+			td.header.container
+				.content
+					table
+						tr
+							td
+								.mailHeader__imageWrap
+									img.mailHeader__logo(src="{{ 'logo.png' | asset_url }}")
+							td(align='right')
+								h3.mailHeader__title CFYE store
+			td
+	table.mailContent.bodyTable
+
+			tr
+				td
+				td.container
+					.content
+						table.fullWidth
+							tr.fullWidth
+								td.mailContent__titleWrap
+									h3.mailContent__title Your order
+								td.mailContent__dateWrap
+									| Date: {{ date | date: "%m/%d/%Y" }}
+					.content
+						table
+
+
+							tr.fullWidth
+									p.lead
+										| Thank you for placing your order with {{ shop_name }}! This e-mail is to confirm that we've received your order and will handle it as soon as possible.
+
+							tr.fullWidth
+								table.fullWidth
+									tr.mailContent__details
+
+										td.mailContent__detailsItem
+											h3.mailContent__detailsTitle Shipping Details
+											p
+												&bull; {{ shipping_address.name }} <br/>
+												&bull; {{ shipping_address.street }} <br/>
+												&bull; {{ shipping_address.city }} <br/>
+												&bull; {{ shipping_address.province }} <br/>
+												&bull; {{ shipping_address.zip }} <br/>
+												&bull; {{ shipping_address.content }}
+
+							tr.fullWidth
+
+									// social & contact
+									table.social(width='50%')
+										tr
+											td
+												// column 1
+												table.column(align='left')
+													tr
+														td
+															h5 Connect with Us:
+															p
+																a.soc-btn.soc-btn--facebook(href='#') Facebook
+																a.soc-btn.soc-btn--twitter(href='#') Twitter
+																a.soc-btn.soc-btn--instagram(href='#') Instagram
+												// /column 1
+												// column 2
+												table.column(align='left')
+													tr
+														td
+															h5 Contact Info:
+															p
+																| Phone:
+																strong 408.341.0600
+																br
+																|                 Email:
+																strong
+																	a(href='emailto:hseldon@trantor.com') hseldon@trantor.com
+												// /column 2
+												span.clear
+									// /social & contact
+					// /content
+				td
+		// /BODY
+	// FOOTER
+	table.mailFooter.bodyTable
+		tr
+			td
+			td.container
+				// content
+				.content
+					table
+						tr
+							td(align='center')
+								p
+									a(href='#') Terms and conditions
+									|  |
+									a(href='#') Privacy
+									|  |
+									a(href='#') CFYE Store
+
+				// /content
+			td
+	// /FOOTER

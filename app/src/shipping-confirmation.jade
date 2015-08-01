@@ -1,0 +1,168 @@
+extends ./views/_layout.jade
+
+block content
+	table.row
+		tr
+			td.wrapper.last
+				table.twelve.columns
+					tr
+						td(style="text-align: right;")
+							| Date: {{ date | date: "%m/%d/%Y" }}
+					tr
+						td(style="text-align: right;")
+							| Ordernumber: {{ order_name }}
+					tr
+						td
+							| {% if billing_address.name %}
+							p
+								| Dear {{ billing_address.name }},
+
+							{% else %}
+							p
+								| Hi,
+							{% endif %}
+
+							p
+								| {% if fulfillment.item_count == item_count %}All{% elsif fulfillment_status == 'fulfilled' %}The last{% else %}Some{% endif %} of the items from order {{ name }} have now been shipped.
+
+							| {% if requires_shipping %}
+							P
+								| They are being shipped to the shipping address at the bottom of this e-mail.
+
+
+							| {% if fulfillment.tracking_number %}
+							p
+								| They are being shipped{% if fulfillment.tracking_company %} via {{ fulfillment.tracking_company }}{% endif %} with tracking number {{ fulfillment.tracking_number }}. You can see the status of this shipment at the following URL: {{ fulfillment.tracking_url }}
+
+							| {% endif %}
+							| {% endif %}
+
+							p
+								| Please allow some time for the status of the shipment to correctly display at the above address.
+
+							| {% if fulfillment_status != 'fulfilled' %}
+							p
+								| You will receive a confirmation email when more items from your order have been shipped.
+							| {% endif %}
+
+							p
+								| Thank you for ordering from {{ shop_name }}!
+
+							h5 Your order:
+						td.expander
+
+	table.row
+		tr
+			td
+
+				table.cartTable
+					thead
+						th Item
+						th &nbsp;
+						th quantity
+						th price
+
+					| {% for line in line_items %}
+					tr
+						td
+							img(src="{{ line | img_url: 'small' }}")
+						td {{ line.title }}
+						td {{ line.quantity }} x
+						td {{ line.price | money }}</li>
+					| {% endfor %}
+
+					tfoot
+						| {% if discounts %}
+						tr
+							td
+								| Discounts : {{ discounts_savings | money_with_currency }}
+						| {% endif %}
+
+						tr
+							td
+								| Subtotal : {{ subtotal_price | money_with_currency }}
+
+						| {% for tax_line in tax_lines %}
+						tr
+							td
+								| {{ tax_line.title }} : {{ tax_line.price | money_with_currency }}
+						| {% endfor %}
+
+						| {% if requires_shipping %}
+						tr
+							td
+								| Shipping : {{ shipping_price | money_with_currency }}
+						| {% endif %}
+
+						tr
+							td
+								| Total : {{ total_price | money_with_currency }}
+
+
+	table.customerDetails
+		tr
+			td.wrapper
+				table.six.columns
+					thead
+						th.left-text-pad
+							| Shipping details
+
+					tr
+						td.left-text-pad
+							| {{ shipping_address.name }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.street }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.city }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.province }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.zip }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.country }}
+			| {% if billing_address %}
+			td.wrapper.last
+				table.six.columns
+					thead
+						th.left-text-pad
+							| Billing details
+
+					tr
+						td.left-text-pad
+							| {{ shipping_address.name }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.street }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.city }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.province }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.zip }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.country }}
+			| {% endif %}
+	//- table.row.callout
+	//-   tr
+	//-     td.wrapper.last
+	//-       table.twelve.columns
+
+	//-         tr
+
+	//-           td.panel
+	//-             p
+	//-               | Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae.
+	//-               a(href='#') Click it! »
+	//-           td.expander
+
+
+	// container end below

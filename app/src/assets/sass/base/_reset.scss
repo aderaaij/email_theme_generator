@@ -1,31 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body{
-    margin:0;
-    padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 img{
-    border:0 none;
-    height:auto;
-    line-height:100%;
-    outline:none;
-    text-decoration:none;
+  border: 0 none;
+  height: auto;
+  line-height: 100%;
+  outline: none;
+  text-decoration: none;
+  display: block;
 }
 
 a img{
-    border:0 none;
+  border: 0 none;
 }
 
-.imageFix{
-    display:block;
-}
-
-table, td{
-    border-collapse:collapse;
-}
-
-#bodyTable{
-    height:100% !important;
-    margin:0;
-    padding:0;
-    width:100% !important;
+table,
+td {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

@@ -1,0 +1,26 @@
+.mailContent {
+
+  tbody {
+    width: 100%;
+  }
+
+  & {
+    width: 100%;
+    background-color: #ececec;
+  }
+
+  &__dateWrap {
+    text-align: right;
+  }
+
+  p {
+    line-height: 1.3;
+    font-size: 16px;
+  }
+
+  &__detailsItem {
+    width: 100%;
+
+
+  }
+}

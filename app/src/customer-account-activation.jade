@@ -1,0 +1,37 @@
+extends ./views/_layout.jade
+
+block content
+	table.row
+		tr
+			td.wrapper.last
+				table.twelve.columns
+					tr
+						td
+							| {% if customer.name %}
+							p
+								| Dear {{ customer.name }},
+
+							{% else %}
+							p
+								| Hi,
+							{% endif %}
+
+							p
+								| An account has been created for you at the shop {{ shop.name }}. Please visit this url to activate your account and set your password:
+
+							p
+								| {{ customer.account_activation_url }}
+
+							p
+								| If the account was created in error, you can visit the link above and select "Decline" to decline this invitation.
+
+						td.expander
+
+							{% if customer.name %}Dear {{ customer.name }},{% endif %}
+
+
+
+
+
+
+

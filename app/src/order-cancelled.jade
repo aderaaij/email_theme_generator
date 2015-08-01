@@ -1,0 +1,34 @@
+extends ./views/_layout.jade
+
+block content
+	table.row
+		tr
+			td.wrapper.last
+				table.twelve.columns
+					tr
+						td(style="text-align: right;")
+							| Date: {{ date | date: "%m/%d/%Y" }}
+					tr
+						td(style="text-align: right;")
+							| Ordernumber: {{ order_name }}
+					tr
+						td
+							| {% if billing_address.name %}
+							p
+								| Dear {{ billing_address.name }},
+
+							{% else %}
+							p
+								| Hi,
+							{% endif %}
+
+							p
+								| Your order {{ name }} was cancelled {% case cancel_reason %}{% when 'customer' %}at your request.{% when 'inventory' %}because we did not have enough stock to fulfill your order.{% when 'fraud' %}because we suspect it is fraudulent.{% when 'other' %}due to unforseen circumstances.{% endcase %}
+
+							p
+								| {% if financial_status == 'voided' %}Your payment has been voided.{% elsif financial_status == 'refunded' %}Your payment has been refunded.{% endif %}
+
+							P
+								| Please reply to this email if you have any questions or concerns.
+
+						td.expander

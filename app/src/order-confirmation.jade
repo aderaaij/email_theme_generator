@@ -1,104 +1,136 @@
 extends ./views/_layout.jade
 
 block content
-	table.mailHeader.bodyTable
+	table.row
+		tr
+			td.wrapper.last
+				table.twelve.columns
+					tr
+						td(style="text-align: right;")
+							| Date: {{ date | date: "%m/%d/%Y" }}
+					tr
+						td(style="text-align: right;")
+							| Ordernumber: {{ order_name }}
+					tr
+						td
+							p Hi there,
+							p
+								| Thank you for your order with {{ shop_name }}. We're sending you this e-mail to let you know your order has been received and will be processed as soon as possible! You will get another e-mail as soon as your order is out the door.
+							h5 Your order:
+						td.expander
+
+	table.row
 		tr
 			td
-			td.header.container
-				.content
-					table
+
+				table.cartTable
+					thead
+						th Item
+						th &nbsp;
+						th quantity
+						th price
+
+					| {% for line in line_items %}
+					tr
+						td
+							img(src="{{ line | img_url: 'small' }}")
+						td {{ line.title }}
+						td {{ line.quantity }} x
+						td {{ line.price | money }}</li>
+					| {% endfor %}
+
+					tfoot
+						| {% if discounts %}
 						tr
 							td
-								.mailHeader__imageWrap
-									img.mailHeader__logo(src="{{ 'logo.png' | asset_url }}")
-							td(align='right')
-								h3.mailHeader__title CFYE store
-			td
-	table.mailContent.bodyTable
+								| Discounts : {{ discounts_savings | money_with_currency }}
+						| {% endif %}
 
-			tr
-				td
-				td.container
-					.content
-						table.fullWidth
-							tr.fullWidth
-								td.mailContent__titleWrap
-									h3.mailContent__title Your order
-								td.mailContent__dateWrap
-									| Date: {{ date | date: "%m/%d/%Y" }}
-					.content
-						table
-
-
-							tr.fullWidth
-									p.lead
-										| Thank you for placing your order with {{ shop_name }}! This e-mail is to confirm that we've received your order and will handle it as soon as possible.
-
-							tr.fullWidth
-								table.fullWidth
-									tr.mailContent__details
-
-										td.mailContent__detailsItem
-											h3.mailContent__detailsTitle Shipping Details
-											p
-												&bull; {{ shipping_address.name }} <br/>
-												&bull; {{ shipping_address.street }} <br/>
-												&bull; {{ shipping_address.city }} <br/>
-												&bull; {{ shipping_address.province }} <br/>
-												&bull; {{ shipping_address.zip }} <br/>
-												&bull; {{ shipping_address.content }}
-
-							tr.fullWidth
-
-									// social & contact
-									table.social(width='50%')
-										tr
-											td
-												// column 1
-												table.column(align='left')
-													tr
-														td
-															h5 Connect with Us:
-															p
-																a.soc-btn.soc-btn--facebook(href='#') Facebook
-																a.soc-btn.soc-btn--twitter(href='#') Twitter
-																a.soc-btn.soc-btn--instagram(href='#') Instagram
-												// /column 1
-												// column 2
-												table.column(align='left')
-													tr
-														td
-															h5 Contact Info:
-															p
-																| Phone:
-																strong 408.341.0600
-																br
-																|                 Email:
-																strong
-																	a(href='emailto:hseldon@trantor.com') hseldon@trantor.com
-												// /column 2
-												span.clear
-									// /social & contact
-					// /content
-				td
-		// /BODY
-	// FOOTER
-	table.mailFooter.bodyTable
-		tr
-			td
-			td.container
-				// content
-				.content
-					table
 						tr
-							td(align='center')
-								p
-									a(href='#') Terms and conditions
-									|  |
-									a(href='#') Privacy
-									|  |
-									a(href='#') CFYE Store
+							td
+								| Subtotal : {{ subtotal_price | money_with_currency }}
 
-				// /content
-			td
-	// /FOOTER
+						| {% for tax_line in tax_lines %}
+						tr
+							td
+								| {{ tax_line.title }} : {{ tax_line.price | money_with_currency }}
+						| {% endfor %}
+
+						| {% if requires_shipping %}
+						tr
+							td
+								| Shipping : {{ shipping_price | money_with_currency }}
+						| {% endif %}
+
+						tr
+							td
+								| Total : {{ total_price | money_with_currency }}
+
+
+	table.customerDetails
+		tr
+			td.wrapper
+				table.six.columns
+					thead
+						th.left-text-pad
+							| Shipping details
+
+					tr
+						td.left-text-pad
+							| {{ shipping_address.name }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.street }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.city }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.province }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.zip }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.country }}
+			| {% if billing_address %}
+			td.wrapper.last
+				table.six.columns
+					thead
+						th.left-text-pad
+							| Billing details
+
+					tr
+						td.left-text-pad
+							| {{ shipping_address.name }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.street }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.city }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.province }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.zip }}
+					tr
+						td.left-text-pad
+							| {{ shipping_address.country }}
+			| {% endif %}
+	//- table.row.callout
+	//- 	tr
+	//- 		td.wrapper.last
+	//- 			table.twelve.columns
+
+	//- 				tr
+
+	//- 					td.panel
+	//- 						p
+	//- 							| Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae.
+	//- 							a(href='#') Click it! »
+	//- 					td.expander
+
+
+	// container end below

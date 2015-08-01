@@ -1,0 +1,29 @@
+extends ./views/_layout.jade
+
+block content
+	table.row
+		tr
+			td.wrapper.last
+				table.twelve.columns
+					tr
+						td
+							| {% if customer.name %}
+							p
+								| Dear {{ customer.name }},
+
+							{% else %}
+							p
+								| Hi,
+							{% endif %}
+
+							p
+								| This is to confirm that your account for the shop {{ shop.name }} is now active.
+							p
+								| The next time you shop at {{ shop.name }}, you can save time at checkout by logging into your account. This will prefill your address information at the checkout.
+							p
+								| Thank you,
+
+							P
+								| {{ shop.name }}
+
+						td.expander

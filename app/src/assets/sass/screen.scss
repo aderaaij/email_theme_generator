@@ -2,12 +2,6 @@
 // @import 'base/reset';
 // @import 'base/base';
 
-// // Modules
-
-// @import 'modules/mailHeader';
-// @import 'modules/mailContent';
-// @import 'modules/mailFooter';
-
 @import 'modules/default';
 
 .logoWrap {
@@ -20,7 +14,7 @@
 
   & {
     width: 580px;
-    margin: 0 auto;
+    margin: 0 auto 0 10px;
     border: 1px solid #ececec;
   }
 
